@@ -3,13 +3,24 @@ package org.example;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface ProductRepo {
-    public List<Product> productRepo = new ArrayList<>();
+public class ProductRepo {
+    public List<Product> products = new ArrayList<>();
 
-    List<Product> listProducts();
+    Product result;
 
-   public Product addProduct(Product product);
+    List<Product> listProducts() {
+        return products;
+    }
 
-    public Product get(String name);
+    public Product addProduct(Product product) {
+        products.add(product);
+        return product;
+    }
 
+    public Product getProduct(String productName) {
+        for (Product product : products) {
+            if (product.getName().equals(productName)) result = product;
+        }
+        return result;
+    }
 }

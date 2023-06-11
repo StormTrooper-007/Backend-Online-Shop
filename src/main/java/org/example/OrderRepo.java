@@ -3,14 +3,23 @@ package org.example;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface OrderRepo {
+public class OrderRepo {
+    public List<Order> orders = new ArrayList<>();
+    Order result;
 
-    public List<Order> orderRepo = new ArrayList<>();
+    public Order addOrder(Order order) {
+        orders.add(order);
+        return order;
+    }
 
-    public Order addOrder(Order order);
+    public List<Order> listOrders() {
+        return orders;
+    }
 
-    public List<Order> listOrders();
-
-    public Order get(int id);
-
+    public Order getOrder(int id) {
+        for (Order order : orders) {
+            if (order.getId() == id) result = order;
+        }
+        return result;
+    }
 }
